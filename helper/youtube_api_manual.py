@@ -8,7 +8,7 @@ import isodate
 
 
 # YT_API_KEY скопирован из гугла и вставлен в переменные окружения
-api_key: str = os.getenv('YT_API_KEY')
+api_key: str = os.getenv('API_KEY')
 
 # создать специальный объект для работы с API
 youtube = build('youtube', 'v3', developerKey=api_key)
@@ -87,8 +87,8 @@ for video in video_response['items']:
 получить id можно из адреса видео
 https://www.youtube.com/watch?v=9lO06Zxhu88 или https://youtu.be/9lO06Zxhu88
 '''
-video_id = '9lO06Zxhu88'
-video_id = '9lO06Zxhu88'  # дудь кремниевая долина
+# video_id = '9lO06Zxhu88'
+# video_id = '9lO06Zxhu88'  # дудь кремниевая долина
 video_id = '4jRSy-_CLFg'  # Редакция плейлист анти-тревел
 video_response = youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
                                        id=video_id
