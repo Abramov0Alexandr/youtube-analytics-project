@@ -38,21 +38,27 @@ class Channel:
             json.dump(data, file, indent=4)
 
     def __add__(self, other):
-
+        self.__verify_classes(other)
         other_cls_atr = other.__subscribers_count
         return self.__subscribers_count + other_cls_atr
 
     def __sub__(self, other):
-
+        self.__verify_classes(other)
         other_cls_atr = other.__subscribers_count
         return self.__subscribers_count - other_cls_atr
 
     def __le__(self, other):
+        self.__verify_classes(other)
         other_cls_atr = other.__subscribers_count
         return self.__subscribers_count <= other_cls_atr
 
     def __str__(self):
         return f"{self.__title} ({self.__url})"
+
+    @classmethod
+    def __verify_classes(cls, other):
+        if not isinstance(other, Channel):
+            raise TypeError("Действие допустимо только для экземпляров класса Chanel")
 
     @classmethod
     def get_service(cls):
