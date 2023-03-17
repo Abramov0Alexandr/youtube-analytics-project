@@ -13,11 +13,11 @@ class Channel:
         self.__channel_id = channel_id
         self.__channel = self.__youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
         self.__title = self.__channel['items'][0]['snippet']['title']
-        self.__video_count = self.__channel['items'][0]['statistics']['videoCount']
+        self.__video_count = int(self.__channel['items'][0]['statistics']['videoCount'])
         self.__url = f"https://www.youtube.com/channel/{channel_id}"
         self.__description = self.__channel['items'][0]['snippet']['description']
-        self.__subscribers_count = self.__channel['items'][0]['statistics']['subscriberCount']
-        self.__view_count = self.__channel['items'][0]['statistics']['viewCount']
+        self.__subscribers_count = int(self.__channel['items'][0]['statistics']['subscriberCount'])
+        self.__view_count = int(self.__channel['items'][0]['statistics']['viewCount'])
 
     def print_info(self):
         """Выводит в консоль информацию о канале."""
@@ -36,6 +36,23 @@ class Channel:
 
         with open(filename, 'w') as file:
             json.dump(data, file, indent=4)
+
+    def __add__(self, other):
+
+        other_el = other.__subscribers_count
+        return self.__subscribers_count + other_el
+
+    def __sub__(self, other):
+
+        other_el = other.__subscribers_count
+        return self.__subscribers_count - other_el
+
+    def __le__(self, other):
+        other_el = other.__subscribers_count
+        return self.__subscribers_count <= other_el
+
+    def __str__(self):
+        return f"{self.__title} ({self.__url})"
 
     @classmethod
     def get_service(cls):
