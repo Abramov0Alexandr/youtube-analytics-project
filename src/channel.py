@@ -39,18 +39,15 @@ class Channel:
 
     def __add__(self, other):
         self.__verify_classes(other)
-        other_cls_atr = other.__subscribers_count
-        return self.__subscribers_count + other_cls_atr
+        return self.__subscribers_count + other.__subscribers_count
 
     def __sub__(self, other):
         self.__verify_classes(other)
-        other_cls_atr = other.__subscribers_count
-        return self.__subscribers_count - other_cls_atr
+        return self.__subscribers_count - other.__subscribers_count
 
     def __le__(self, other):
         self.__verify_classes(other)
-        other_cls_atr = other.__subscribers_count
-        return self.__subscribers_count <= other_cls_atr
+        return self.__subscribers_count <= other.__subscribers_count
 
     def __str__(self):
         return f"{self.__title} ({self.__url})"
