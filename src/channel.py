@@ -37,19 +37,19 @@ class Channel:
         with open(filename, 'w') as file:
             json.dump(data, file, indent=4)
 
-    def __add__(self, other):
+    def __add__(self, other) -> int:
         self.__verify_classes(other)
         return self.__subscribers_count + other.__subscribers_count
 
-    def __sub__(self, other):
+    def __sub__(self, other) -> int:
         self.__verify_classes(other)
         return self.__subscribers_count - other.__subscribers_count
 
-    def __le__(self, other):
+    def __le__(self, other) -> bool:
         self.__verify_classes(other)
         return self.__subscribers_count <= other.__subscribers_count
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.__title} ({self.__url})"
 
     @classmethod
