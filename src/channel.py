@@ -45,9 +45,17 @@ class Channel:
         self.__verify_classes(other)
         return self.__subscribers_count - other.__subscribers_count
 
+    def __eq__(self, other):
+        self.__verify_classes(other)
+        return self.__subscribers_count == other.__subscribers_count
+
     def __le__(self, other) -> bool:
         self.__verify_classes(other)
         return self.__subscribers_count <= other.__subscribers_count
+
+    def __gt__(self, other):
+        self.__verify_classes(other)
+        return self.__subscribers_count > other.__subscribers_count
 
     def __str__(self) -> str:
         return f"{self.__title} ({self.__url})"
