@@ -7,7 +7,7 @@ class Video:
     __API_KEY: str = os.getenv('API_KEY')
     __youtube = build('youtube', 'v3', developerKey=__API_KEY)
 
-    def __init__(self, video_id):
+    def __init__(self, video_id: str):
         self.__video_id = video_id
         self.__video_response = self.__youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
                                                              id=self.__video_id).execute()
@@ -16,26 +16,26 @@ class Video:
         self.__view_count = self.__video_response['items'][0]['statistics']['viewCount']
         self.__like_count = self.__video_response['items'][0]['statistics']['likeCount']
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.__video_title
 
     @property
-    def video_id(self):
+    def video_id(self) -> str:
         return self.__video_id
 
     @property
-    def video_title(self):
+    def video_title(self) -> str:
         return self.__video_title
 
     @property
-    def video_url(self):
+    def video_url(self) -> str:
         return self.__video_url
 
     @property
-    def view_count(self):
+    def view_count(self) -> str:
         return self.__view_count
 
     @property
-    def like_count(self):
+    def like_count(self) -> str:
         return self.__like_count
 
