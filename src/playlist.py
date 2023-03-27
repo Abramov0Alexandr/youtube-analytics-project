@@ -24,16 +24,12 @@ class PlayList:
         return self.__url
 
     @property
-    def playlists_info(self):
-        return self.__playlists_info
-
-    @property
     def total_duration(self):
         total_duration = datetime.timedelta()
-        info = self.__youtube.playlistItems().list(playlistId=self.__playlist_id, part='contentDetails', maxResults=50,
-                                                   ).execute()
+        each_video_info = self.__youtube.playlistItems().list(playlistId=self.__playlist_id, part='contentDetails',
+                                                              maxResults=50,).execute()
 
-        video_ids: list[str] = [video['contentDetails']['videoId'] for video in info['items']]
+        video_ids: list[str] = [video['contentDetails']['videoId'] for video in each_video_info['items']]
 
         video_response = self.__youtube.videos().list(part='contentDetails,statistics', id=','.join(video_ids)
                                                       ).execute()
