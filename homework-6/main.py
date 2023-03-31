@@ -7,9 +7,12 @@ if __name__ == '__main__':
 
 
 # Пример работы программы в случае, если id видео передано корректно
+
     video1 = Video('9lO06Zxhu88')  # '9lO06Zxhu88' - это id видео из ютуб
-    assert str(video1.video_url)
-    assert str(video1.video_id)
-    assert str(video1.title)
-    assert str(video1.like_count)
-    assert str(video1.view_count)
+
+    assert video1.video_url == 'https://www.youtube.com/watch?v=9lO06Zxhu88'
+    assert video1.video_id == '9lO06Zxhu88'
+    assert video1.title == 'Как устроена IT-столица мира / Russian Silicon Valley (English subs)'
+    assert video1.like_count == '976862'
+    assert video1.view_count == '49458251'
+    assert str(video1) == 'Как устроена IT-столица мира / Russian Silicon Valley (English subs)'
