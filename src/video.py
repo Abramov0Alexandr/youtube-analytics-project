@@ -44,4 +44,3 @@ class Video:
     @property
     def like_count(self) -> str:
         return self.__like_count
-
