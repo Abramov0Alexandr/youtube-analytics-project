@@ -1,6 +1,5 @@
 import os
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 
 
 class Video:
@@ -51,4 +50,3 @@ class Video:
     @property
     def like_count(self) -> str:
         return self.__like_count
-
