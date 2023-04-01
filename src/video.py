@@ -9,9 +9,9 @@ class Video:
 
     def __init__(self, video_id: str):
         self.__video_id = video_id
-        try:
-            self.__video_response = self.__youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
+        self.__video_response = self.__youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
                                                                  id=self.__video_id).execute()
+        try:
             self.__title = self.__video_response['items'][0]['snippet']['title']
             self.__video_url = f"https://www.youtube.com/watch?v={self.__video_id}"
             self.__view_count = self.__video_response['items'][0]['statistics']['viewCount']
